@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ZeroPress Schemas</title>
+    <meta
+      name="description"
+      content="Canonical JSON Schema files for ZeroPress preview data, theme runtime, and Build Pages config contracts."
+    >
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #fbfbfd;
+        --fg: #0b0d12;
+        --muted: #5b6472;
+        --panel: #ffffff;
+        --border: #e5e7eb;
+        --link: #4f46e5;
+        --code: #f3f4f6;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0d12;
+          --fg: #f3f5f8;
+          --muted: #a4adbc;
+          --panel: #11141b;
+          --border: #232834;
+          --link: #818cf8;
+          --code: #1b202b;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font:
+          16px/1.6 system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+
+      main {
+        width: min(920px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 56px 0 28px;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 3.6vw, 2.55rem);
+      }
+
+      h2 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+      }
+
+      p {
+        margin: 0 0 20px;
+        color: var(--muted);
+      }
+
+      a {
+        color: var(--link);
+        text-decoration: underline;
+        text-decoration-color: var(--border);
+        text-underline-offset: 3px;
+        transition: all 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+
+      a:hover {
+        text-decoration-color: var(--link);
+      }
+
+      code {
+        padding: 0.12em 0.32em;
+        border-radius: 4px;
+        background: var(--code);
+        font-size: 0.92em;
+      }
+
+      .intro {
+        margin-bottom: 32px;
+      }
+
+      .schema-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .schema-card {
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .schema-card ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .schema-card li + li {
+        margin-top: 8px;
+      }
+
+      .schema-card p {
+        margin-bottom: 16px;
+      }
+
+      .note {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="intro">
+        <h1>ZeroPress Schemas</h1>
+        <p>
+          Canonical JSON Schema files for ZeroPress contracts. These URLs are
+          intended for <code>$schema</code> references, editor validation, and
+          tooling integration.
+        </p>
+      </section>
+
+      <section class="schema-list" aria-label="Available schemas">
+        <article class="schema-card">
+          <h2>Preview Data</h2>
+          <p>
+            Describes the portable content snapshot consumed by
+            <code>@zeropress/build-core</code> and <code>@zeropress/build</code>.
+            It is also the output target for Build Pages and Studio publishing
+            workflows.
+          </p>
+          <ul>
+            <li><a href="/preview-data/v0.6/schema.json">preview-data v0.6</a></li>
+            <li><a href="/preview-data/v0.5/schema.json">preview-data v0.5</a></li>
+          </ul>
+        </article>
+
+        <article class="schema-card">
+          <h2>Theme Runtime</h2>
+          <p>
+            Describes a ZeroPress theme package: templates, assets, slots,
+            feature hints, and metadata. It is consumed by
+            <code>@zeropress/theme-validator</code>,
+            <code>@zeropress/theme</code>, <code>@zeropress/build-core</code>,
+            and <code>@zeropress/create-theme</code>.
+          </p>
+          <ul>
+            <li><a href="/theme-runtime/v0.6/schema.json">theme runtime v0.6</a></li>
+            <li><a href="/theme-runtime/v0.5/schema.json">theme runtime v0.5</a></li>
+          </ul>
+        </article>
+
+        <article class="schema-card">
+          <h2>Build Pages Config</h2>
+          <p>
+            Describes the user-facing config for <code>@zeropress/build-pages</code>.
+            It controls Markdown-site settings before Build Pages generates
+            preview data and invokes the ZeroPress build pipeline.
+          </p>
+          <ul>
+            <li>
+              <a href="/build-pages-config/v0.1/schema.json">build pages config v0.1</a>
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <p class="note">
+        Documentation lives at <a href="https://zeropress.dev/">zeropress.dev</a>.
+      </p>
+    </main>
+  </body>
+</html>

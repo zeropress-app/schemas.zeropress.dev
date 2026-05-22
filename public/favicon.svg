@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <defs>
+    <linearGradient id="grad-top" gradientUnits="userSpaceOnUse" x1="118.4" y1="251.8" x2="907.7" y2="289.2">
+      <stop offset="0%" stop-color="#90c9fc"/>
+      <stop offset="50%" stop-color="#488efc"/>
+      <stop offset="100%" stop-color="#2058ee"/>
+    </linearGradient>
+    <linearGradient id="grad-upper-left" gradientUnits="userSpaceOnUse" x1="99.9" y1="530.2" x2="699.6" y2="370.4">
+      <stop offset="0%" stop-color="#beeac9"/>
+      <stop offset="50%" stop-color="#87d3cb"/>
+      <stop offset="100%" stop-color="#59abdc"/>
+    </linearGradient>
+    <linearGradient id="grad-upper-right" gradientUnits="userSpaceOnUse" x1="353.7" y1="614.2" x2="968.4" y2="439.1">
+      <stop offset="0%" stop-color="#7dd2ca"/>
+      <stop offset="50%" stop-color="#309ad4"/>
+      <stop offset="100%" stop-color="#2779d5"/>
+    </linearGradient>
+    <linearGradient id="grad-lower-left" gradientUnits="userSpaceOnUse" x1="60.7" y1="659.5" x2="543.2" y2="771.7">
+      <stop offset="0%" stop-color="#cff1c5"/>
+      <stop offset="50%" stop-color="#92dac3"/>
+      <stop offset="100%" stop-color="#6acfc4"/>
+    </linearGradient>
+    <linearGradient id="grad-lower-right" gradientUnits="userSpaceOnUse" x1="475.4" y1="826.4" x2="967.7" y2="603.6">
+      <stop offset="0%" stop-color="#67cfce"/>
+      <stop offset="50%" stop-color="#3aabd0"/>
+      <stop offset="100%" stop-color="#2f88d5"/>
+    </linearGradient>
+  </defs>
+
+  <g id="symbol" transform="translate(-111,-105)">
+    <path id="surface-top"
+      d="M 141 282
+         C 236.95 336.77 335.91 390.32 454 394
+         C 615.35 399.88 755.64 358.24 884 283
+         C 771.24 226.37 654.72 172.68 541 116
+         C 522.54 105.48 497.8 107.96 480 118
+         C 367.33 173.47 253.8 226.86 141 282 Z"
+      fill="url(#grad-top)"/>
+
+    <path id="surface-upper-left"
+      d="M 114 318
+         L 114 491
+         C 201.9 529.43 289.21 612.86 395 576
+         C 499.06 538 587.18 461.49 684 406
+         C 591.17 428.26 478.65 447.94 377 427
+         C 281.33 409.98 200.04 358.26 114 318 Z"
+      fill="url(#grad-upper-left)"/>
+
+    <path id="surface-upper-right"
+      d="M 908 318
+         C 805.14 372.9 704.39 432.9 607 501
+         C 535.62 550.91 462.9 601.45 382 626
+         C 449.44 658.92 541.63 664.88 614 638
+         C 715.73 600.29 809.23 542.69 908 490 Z"
+      fill="url(#grad-upper-right)"/>
+
+    <path id="surface-lower-left"
+      d="M 114 533
+         C 237.32 588.74 351.62 674.86 489 700
+         L 489 900
+         L 125 713
+         C 118 710 114 704 114 691 Z"
+      fill="url(#grad-lower-left)"/>
+
+    <path id="surface-lower-right"
+      d="M 908 532
+         L 908 697
+         C 908 704 905 710 899 713
+         L 535 900
+         L 535 700
+         C 670.76 671.58 785.49 592.41 908 532 Z"
+      fill="url(#grad-lower-right)"/>
+  </g>
+</svg>
