@@ -232,8 +232,8 @@
           "type": "boolean"
         },
         "newsletter": {
-          "description": "Whether the theme supports newsletter UI capability.",
-          "markdownDescription": "Whether the theme supports newsletter UI capability.",
+          "description": "Whether the theme supports a newsletter CTA/island UI. ZeroPress does not implement provider submit behavior.",
+          "markdownDescription": "Whether the theme supports a newsletter CTA/island UI. ZeroPress does not implement provider submit behavior.",
           "type": "boolean"
         },
         "post_index": {
