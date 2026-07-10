@@ -53,8 +53,17 @@
         },
         "url": {
           "type": "string",
-          "description": "Canonical site URL. Use an empty string or omit this field for local builds without canonical output.",
-          "markdownDescription": "Canonical site URL. Use an empty string or omit this field for local builds without canonical output."
+          "anyOf": [
+            {
+              "const": ""
+            },
+            {
+              "format": "uri",
+              "pattern": "^[Hh][Tt][Tt][Pp][Ss]?://[^/?#]+/?$"
+            }
+          ],
+          "description": "Canonical HTTP(S) site URL at the origin root. Paths, queries, fragments, and subdirectory hosting are not supported. Use an empty string or omit this field when the deployment URL is not known.",
+          "markdownDescription": "Canonical HTTP(S) site URL at the origin root. Paths, queries, fragments, and subdirectory hosting are not supported. Use an empty string or omit this field when the deployment URL is not known."
         },
         "logo": {
           "$ref": "#/$defs/siteLogo"
