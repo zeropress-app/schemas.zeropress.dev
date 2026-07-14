@@ -12,11 +12,23 @@ const HISTORICAL_SCHEMAS = Object.freeze([
     relativePath: "preview-data/v0.6/schema.json",
     sha256: "688caccf24d0cffd53b0a33cb5be6f8ecbc7596aef8ad9de82e939a0e2d0a20f",
   }),
+  Object.freeze({
+    relativePath: "theme-runtime/v0.5/schema.json",
+    sha256: "72b819f0ac71c9db7d10fcba53946fc5f0d86ce4e7a0386397852a7b4321d423",
+  }),
+  Object.freeze({
+    relativePath: "theme-runtime/v0.6/schema.json",
+    sha256: "467bfacba9b2d47d382ef905ddb3798e0850324f7eab3c0b7b107a4fa4b0d308",
+  }),
+  Object.freeze({
+    relativePath: "build-pages-config/v0.1/schema.json",
+    sha256: "1281680494a0079a19c40b704af9e7d98dd450b1b735b49d68d8b1254a2cdfcd",
+  }),
 ]);
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, "..");
-const schemaRoot = resolveFromRepoRoot(process.argv[2] || "dist");
+const schemaRoot = resolveFromRepoRoot(process.argv[2] || "schemas");
 
 function resolveFromRepoRoot(value) {
   return path.isAbsolute(value) ? value : path.resolve(repoRoot, value);

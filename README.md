@@ -6,8 +6,7 @@ This repository is intentionally small. It publishes static schema files for edi
 
 ## Historical schema verification
 
-Historical schemas are pinned by their raw SHA-256 digest. Verify the tracked
-schema sources locally with:
+Historical schemas are pinned by their raw SHA-256 digest. Verify the tracked schema sources locally with:
 
 ```sh
 node ./scripts/verify-historical-schemas.mjs ./schemas
