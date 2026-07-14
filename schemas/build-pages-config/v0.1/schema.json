@@ -46,7 +46,8 @@
       "properties": {
         "title": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "pattern": "\\S"
         },
         "description": {
           "type": "string"
@@ -59,9 +60,15 @@
             },
             {
               "format": "uri",
-              "pattern": "^[Hh][Tt][Tt][Pp][Ss]?://[^/?#]+/?$"
+              "pattern": "^[Hh][Tt][Tt][Pp][Ss]?://(?:[^/?#@]+@)?(?:\\[[0-9A-Fa-f:.]+\\]|[^/?#:@]+)(?::[0-9]+)?/?$"
             }
           ],
+          "allOf": [
+            { "not": { "pattern": "[\\\\\\s\\p{Cc}]" } },
+            { "not": { "pattern": "%(?![0-9A-Fa-f]{2})" } },
+            { "not": { "pattern": "%(?:0[0-9A-Fa-f]|1[0-9A-Fa-f]|7[Ff]|5[Cc])" } }
+          ],
+          "x-zeropress-runtime-url-validation": "WHATWG URL parsing validates hostname, port range, and IP-address syntax.",
           "description": "Canonical HTTP(S) site URL at the origin root. Paths, queries, fragments, and subdirectory hosting are not supported. Use an empty string or omit this field when the deployment URL is not known.",
           "markdownDescription": "Canonical HTTP(S) site URL at the origin root. Paths, queries, fragments, and subdirectory hosting are not supported. Use an empty string or omit this field when the deployment URL is not known."
         },
@@ -71,6 +78,7 @@
         "locale": {
           "type": "string",
           "minLength": 2,
+          "pattern": "^\\S+$",
           "description": "Site locale used for generated preview-data language metadata, such as html lang and feed language.",
           "markdownDescription": "Site locale used for generated preview-data language metadata, such as HTML `lang` and feed language."
         },
@@ -110,8 +118,24 @@
         "src": {
           "type": "string",
           "minLength": 1,
-          "description": "Logo URL copied into preview-data. Use a root-relative public path such as /logo.svg, or an absolute URL. Config-relative file lookup is not performed.",
-          "markdownDescription": "Logo URL copied into preview-data. Use a root-relative public path such as `/logo.svg`, or an absolute URL. Config-relative file lookup is not performed."
+          "pattern": "^(?!\\s)(?!.*\\s$).+$",
+          "anyOf": [
+            {
+              "pattern": "^/(?!/)"
+            },
+            {
+              "format": "uri",
+              "pattern": "^[Hh][Tt][Tt][Pp][Ss]?://(?:[^/?#@]+@)?(?:\\[[0-9A-Fa-f:.]+\\]|[^/?#:@]+)(?::[0-9]+)?(?:[/?#].*)?$"
+            }
+          ],
+          "allOf": [
+            { "not": { "pattern": "[\\\\\\s\\p{Cc}]" } },
+            { "not": { "pattern": "%(?![0-9A-Fa-f]{2})" } },
+            { "not": { "pattern": "%(?:0[0-9A-Fa-f]|1[0-9A-Fa-f]|7[Ff]|5[Cc])" } }
+          ],
+          "x-zeropress-runtime-url-validation": "WHATWG URL parsing validates hostname, port range, and IP-address syntax.",
+          "description": "Logo URL copied into preview-data. Use a root-relative public path such as /logo.svg, or an absolute HTTP(S) URL. Document-relative paths are not supported.",
+          "markdownDescription": "Logo URL copied into preview-data. Use a root-relative public path such as `/logo.svg`, or an absolute HTTP(S) URL. Document-relative paths such as `./logo.svg` and `../logo.svg` are not supported."
         },
         "alt": {
           "type": "string",
@@ -129,6 +153,7 @@
         "copyright_text": {
           "type": "string",
           "minLength": 1,
+          "pattern": "\\S",
           "description": "Footer copyright or legal text. ZeroPress does not add a copyright symbol automatically.",
           "markdownDescription": "Footer copyright or legal text. ZeroPress does not add a copyright symbol automatically."
         },
@@ -244,9 +269,31 @@
     "sourceFilePath": {
       "type": "string",
       "minLength": 1,
-      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*[?#]).+$",
-      "description": "Source-root relative path. Leading slash, parent-directory traversal, query strings, and hash fragments are not allowed.",
-      "markdownDescription": "Source-root relative path. Leading slash, parent-directory traversal, query strings, and hash fragments are not allowed."
+      "pattern": "^(?!\\s)(?!.*\\s$)(?!/)(?!.*\\\\)(?!.*//)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*[?#]).+$",
+      "description": "Exact source-root relative path. Leading or trailing whitespace, backslashes, empty or dot path segments, query strings, hash fragments, and parent-directory traversal are not allowed.",
+      "markdownDescription": "Exact source-root relative path. Leading or trailing whitespace, backslashes, empty or dot path segments, query strings, hash fragments, and parent-directory traversal are not allowed. File-extension matching is case-sensitive."
+    },
+    "menuUrl": {
+      "description": "Absolute HTTP(S) URL or safe bare, root-relative, or dot-relative Web path. A path is required before an optional query or fragment.",
+      "markdownDescription": "Absolute HTTP(S) URL or safe bare, root-relative, or dot-relative Web path. A path is required before an optional query or fragment. Protocol-relative URLs, non-Web schemes, whitespace, backslashes, controls, and malformed percent escapes are not allowed.",
+      "x-zeropress-runtime-url-validation": "WHATWG URL parsing validates hostname, port range, and IP-address syntax.",
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^[Hh][Tt][Tt][Pp][Ss]?://(?:[^/?#@]+@)?(?:\\[[0-9A-Fa-f:.]+\\]|[^/?#:@]+)(?::[0-9]+)?(?:[/?#].*)?$",
+          "allOf": [
+            { "not": { "pattern": "[\\\\\\s\\p{Cc}]" } },
+            { "not": { "pattern": "%(?![0-9A-Fa-f]{2})" } },
+            { "not": { "pattern": "%(?:0[0-9A-Fa-f]|1[0-9A-Fa-f]|7[Ff]|5[Cc])" } }
+          ]
+        },
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!//)(?![A-Za-z][A-Za-z0-9+.-]*:)(?![?#])(?!\\.{1,2}(?:[?#]|$))(?!(?:(?:\\./)|(?:\\.\\./))+(?:[?#]|$))(?!/\\.{1,2}/?(?:[?#]|$))(?!(?:/(?:(?:\\./)|(?:\\.\\./))+)(?:[?#]|$))(?!.*[\\\\\\s\\p{Cc}])(?!.*%(?![0-9A-Fa-f]{2}))(?!.*%(?:0[0-9A-Fa-f]|1[0-9A-Fa-f]|7[Ff]|5[Cc]))[^?#]+(?:\\?[^#]*)?(?:#.*)?$"
+        }
+      ]
     },
     "customHtml": {
       "type": "object",
@@ -310,7 +357,8 @@
       "properties": {
         "name": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "pattern": "\\S"
         },
         "items": {
           "type": "array",
@@ -329,11 +377,11 @@
       "properties": {
         "title": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "pattern": "\\S"
         },
         "url": {
-          "type": "string",
-          "minLength": 1
+          "$ref": "#/$defs/menuUrl"
         },
         "type": {
           "type": "string",
@@ -377,17 +425,23 @@
       "properties": {
         "title": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "pattern": "\\S"
         },
         "description": {
           "type": "string"
         },
         "items": {
           "type": "array",
+          "uniqueItems": true,
           "items": {
-            "type": "string",
-            "minLength": 1,
-            "pattern": "^[^\\\\?#]+\\.md$"
+            "allOf": [
+              { "$ref": "#/$defs/sourceFilePath" },
+              {
+                "type": "string",
+                "pattern": "\\.md$"
+              }
+            ]
           }
         }
       }
