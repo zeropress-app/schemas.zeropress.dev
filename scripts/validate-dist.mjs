@@ -43,13 +43,15 @@ function collectSchemaFiles(rootDir) {
 
 function validateSchemaFile(filePath) {
   const schema = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  const relativePath = path.relative(distDir, filePath).split(path.sep).join("/");
+  const expectedId = `${schemaIdPrefix}${relativePath}`;
 
   if (typeof schema.$id !== "string") {
     throw new Error(`${filePath}: missing $id`);
   }
 
-  if (!schema.$id.startsWith(schemaIdPrefix)) {
-    throw new Error(`${filePath}: expected $id to start with ${schemaIdPrefix}`);
+  if (schema.$id !== expectedId) {
+    throw new Error(`${filePath}: expected $id to be ${expectedId}`);
   }
 }
 
