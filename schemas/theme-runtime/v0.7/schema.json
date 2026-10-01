@@ -64,6 +64,12 @@
           "minLength": 1,
           "maxLength": 160,
           "pattern": "\\S"
+        },
+        "max_depth": {
+          "description": "Maximum rendered menu depth, counting top-level items as 1. Omit for no depth limit. Deeper descendants are excluded from rendering with a build warning.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
         }
       }
     },
@@ -288,7 +294,7 @@
     },
     "menu_slots": {
       "description": "Optional map of menu slots declared by the theme.",
-      "markdownDescription": "Optional map of recommended `menu_id` values declared by the theme. Keys are stable identifiers such as `primary`, `footer`, or `docs-sidebar`. This field is informational helper metadata for admin UIs and documentation; it does not assign menus or affect build behavior.",
+      "markdownDescription": "Optional map of menu slots. Keys are stable identifiers such as `primary`, `footer`, or `docs-sidebar`. Each slot may declare `max_depth` to limit its rendered menu depth; omitting it leaves the tree unchanged. Slots do not assign menus.",
       "type": "object",
       "minProperties": 1,
       "maxProperties": 12,
