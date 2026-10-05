@@ -1,53 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://schemas.zeropress.dev/wxr-import-base/v0.7/schema.json",
-  "title": "ZeroPress WXR Import Base v0.7",
-  "description": "Base preset for @zeropress/wxr-import. WXR-generated content and menus are not accepted in this file.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["version"],
-  "properties": {
-    "$schema": {
-      "type": "string",
-      "description": "Optional JSON Schema URI or path used by editors and tooling."
-    },
-    "version": {
-      "const": "0.7",
-      "description": "WXR Import Base contract version."
-    },
-    "site": {
-      "$ref": "#/$defs/site"
-    },
-    "meta": {
-      "$ref": "https://schemas.zeropress.dev/preview-data/v0.7/schema.json#/$defs/previewMeta",
-      "description": "Values copied unchanged to preview-data site.meta. Keys are not interpreted or reserved by the importer."
-    },
-    "comments": {
-      "$ref": "#/$defs/comments"
-    },
-    "newsletter": {
-      "$ref": "https://schemas.zeropress.dev/preview-data/v0.7/schema.json#/$defs/siteNewsletter"
-    },
-    "widgets": {
-      "$ref": "https://schemas.zeropress.dev/preview-data/v0.7/schema.json#/$defs/widgets",
-      "description": "Widget areas copied to preview-data. When omitted, the importer materializes its recommended sidebar defaults in preview-data and the resolved base. An explicit empty object disables that fallback, and any provided object is preserved without augmentation."
-    },
-    "collections": {
-      "$ref": "https://schemas.zeropress.dev/preview-data/v0.7/schema.json#/$defs/collections",
-      "description": "Values copied to preview-data collections."
-    },
-    "custom_css": {
-      "$ref": "https://schemas.zeropress.dev/preview-data/v0.7/schema.json#/$defs/customCss",
-      "description": "Canonical preview-data custom_css value."
-    },
-    "custom_html": {
-      "$ref": "https://schemas.zeropress.dev/preview-data/v0.7/schema.json#/$defs/customHtml",
-      "description": "Trusted raw HTML strings copied to preview-data custom_html."
-    },
-    "import": {
-      "$ref": "#/$defs/import"
-    }
-  },
   "$defs": {
     "site": {
       "type": "object",
@@ -128,13 +81,18 @@
           "if": {
             "required": ["media_delivery_mode"],
             "properties": {
-              "media_delivery_mode": { "const": "media_domain" }
+              "media_delivery_mode": {
+                "const": "media_domain"
+              }
             }
           },
           "then": {
             "required": ["media_origin"],
             "properties": {
-              "media_origin": { "type": "string", "minLength": 1 }
+              "media_origin": {
+                "type": "string",
+                "minLength": 1
+              }
             }
           }
         }
@@ -223,6 +181,53 @@
         ]
       },
       "description": "Absolute HTTP(S) URL prefix without credentials, query, or fragment. The importer normalizes it to a trailing slash."
+    }
+  },
+  "title": "ZeroPress WXR Import Base v0.7",
+  "description": "Base preset for @zeropress/wxr-import. WXR-generated content and menus are not accepted in this file.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional JSON Schema URI or path used by editors and tooling."
+    },
+    "version": {
+      "const": "0.7",
+      "description": "WXR Import Base contract version."
+    },
+    "site": {
+      "$ref": "#/$defs/site"
+    },
+    "meta": {
+      "$ref": "https://schemas.zeropress.dev/preview-data/v0.7/schema.json#/$defs/previewMeta",
+      "description": "Values copied unchanged to preview-data site.meta. Keys are not interpreted or reserved by the importer."
+    },
+    "comments": {
+      "$ref": "#/$defs/comments"
+    },
+    "newsletter": {
+      "$ref": "https://schemas.zeropress.dev/preview-data/v0.7/schema.json#/$defs/siteNewsletter"
+    },
+    "widgets": {
+      "$ref": "https://schemas.zeropress.dev/preview-data/v0.7/schema.json#/$defs/widgets",
+      "description": "Widget areas copied to preview-data. When omitted, the importer materializes its recommended sidebar defaults in preview-data and the resolved base. An explicit empty object disables that fallback, and any provided object is preserved without augmentation."
+    },
+    "collections": {
+      "$ref": "https://schemas.zeropress.dev/preview-data/v0.7/schema.json#/$defs/collections",
+      "description": "Values copied to preview-data collections."
+    },
+    "custom_css": {
+      "$ref": "https://schemas.zeropress.dev/preview-data/v0.7/schema.json#/$defs/customCss",
+      "description": "Canonical preview-data custom_css value."
+    },
+    "custom_html": {
+      "$ref": "https://schemas.zeropress.dev/preview-data/v0.7/schema.json#/$defs/customHtml",
+      "description": "Trusted raw HTML strings copied to preview-data custom_html."
+    },
+    "import": {
+      "$ref": "#/$defs/import"
     }
   },
   "examples": [

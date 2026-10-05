@@ -1,18 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://schemas.zeropress.dev/theme-runtime/v0.7/schema.json",
-  "title": "ZeroPress Theme Manifest (Runtime v0.7)",
-  "description": "Metadata manifest for a ZeroPress theme package.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "namespace",
-    "slug",
-    "version",
-    "license",
-    "runtime"
-  ],
   "$defs": {
     "httpUrl": {
       "description": "Credential-free absolute HTTP(S) URL. Runtime validation rejects whitespace, control characters, backslashes, and malformed percent encoding.",
@@ -47,9 +35,7 @@
       "description": "Admin-facing helper metadata for a recommended menu id. It documents an expected id but does not assign a menu.",
       "markdownDescription": "Admin-facing helper metadata for a recommended menu id. It documents an expected `menu_id` but does not assign a menu.",
       "additionalProperties": false,
-      "required": [
-        "title"
-      ],
+      "required": ["title"],
       "properties": {
         "title": {
           "description": "Non-blank human-readable label shown in helper UIs.",
@@ -78,9 +64,7 @@
       "description": "Admin-facing helper metadata for a recommended widget area id. It documents an expected id but does not assign widgets.",
       "markdownDescription": "Admin-facing helper metadata for a recommended `widget_area_id`. It documents an expected id but does not assign widgets.",
       "additionalProperties": false,
-      "required": [
-        "title"
-      ],
+      "required": ["title"],
       "properties": {
         "title": {
           "description": "Non-blank human-readable label shown in helper UIs.",
@@ -103,9 +87,7 @@
       "description": "Admin-facing helper metadata for a recommended named collection id. It documents an expected id but does not assign collection items.",
       "markdownDescription": "Admin-facing helper metadata for a recommended named collection id. It documents an expected collection id but does not assign collection items.",
       "additionalProperties": false,
-      "required": [
-        "title"
-      ],
+      "required": ["title"],
       "properties": {
         "title": {
           "description": "Non-blank human-readable label shown in helper UIs.",
@@ -128,9 +110,7 @@
       "description": "Admin-facing helper metadata for a site.meta key understood by the theme. It is a hint; core does not assign the value.",
       "markdownDescription": "Admin-facing helper metadata for a `site.meta` key understood by the theme. It is a hint; ZeroPress core does not assign the value.",
       "additionalProperties": false,
-      "required": [
-        "title"
-      ],
+      "required": ["title"],
       "properties": {
         "title": {
           "description": "Non-blank human-readable label shown in helper UIs.",
@@ -154,6 +134,11 @@
       }
     }
   },
+  "title": "ZeroPress Theme Manifest (Runtime v0.7)",
+  "description": "Metadata manifest for a ZeroPress theme package.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "namespace", "slug", "version", "license", "runtime"],
   "properties": {
     "$schema": {
       "description": "Optional JSON Schema URI or path used by editors and tooling. ZeroPress core does not interpret this value.",
