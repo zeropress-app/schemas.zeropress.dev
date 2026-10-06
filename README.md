@@ -27,6 +27,16 @@ JSON Schemas. The current schemas are also published through
 SchemaStore copies use their own `$id`, reference, and example `$schema` URLs
 while preserving the JSON Schema dialect and validation rules.
 
+The `Check deployed schemas` workflow compares the four published schema pairs
+weekly and on manual runs. After canonical schema URLs are replaced with their
+SchemaStore equivalents, the files must be byte-for-byte identical.
+
+To run the same check locally:
+
+```sh
+sh scripts/check-deployed-schemas.sh
+```
+
 ## Historical schema verification
 
 Historical schemas are pinned by their raw SHA-256 digest. Verify the tracked schema sources locally with:
