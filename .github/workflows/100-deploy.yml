@@ -2,9 +2,15 @@
 name: Deploy ZeroPress Schemas to GitHub Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Runs when deployment files change on main
   push:
     branches: ["main"]
+    paths:
+      - "schemas/**"
+      - "public/**"
+      - "scripts/validate-dist.mjs"
+      - "scripts/verify-historical-schemas.mjs"
+      - ".github/workflows/100-deploy.yml"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
