@@ -138,6 +138,18 @@
         border-top: 1px solid var(--border);
         font-size: 0.95rem;
       }
+
+      .note a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3em;
+      }
+
+      .note svg {
+        width: 1em;
+        height: 1em;
+        flex-shrink: 0;
+      }
     </style>
   </head>
   <body>
@@ -145,8 +157,8 @@
       <section class="intro">
         <h1>ZeroPress Schemas</h1>
         <p>
-          Canonical JSON Schema files for ZeroPress contracts. These URLs are intended for
-          <code>$schema</code> references, editor validation, and tooling integration.
+          This site hosts the canonical JSON Schemas for ZeroPress. For editor validation and
+          completion, use the SchemaStore URLs below in your file's <code>$schema</code> field.
         </p>
       </section>
 
@@ -161,7 +173,12 @@
           <ul>
             <li>
               <a href="/preview-data/v0.7/schema.json">preview-data v0.7</a>
-              (current)
+              (current) ·
+              <a
+                href="https://www.schemastore.org/zeropress-preview-data-0.7.json"
+                aria-label="Preview Data v0.7 on SchemaStore"
+                >SchemaStore</a
+              >
             </li>
             <li>
               <a href="/preview-data/v0.6/schema.json">preview-data v0.6</a>
@@ -183,7 +200,12 @@
           <ul>
             <li>
               <a href="/theme-runtime/v0.7/schema.json">theme runtime v0.7</a>
-              (current)
+              (current) ·
+              <a
+                href="https://www.schemastore.org/zeropress-theme-runtime-0.7.json"
+                aria-label="Theme Runtime v0.7 on SchemaStore"
+                >SchemaStore</a
+              >
             </li>
             <li>
               <a href="/theme-runtime/v0.6/schema.json">theme runtime v0.6</a>
@@ -204,7 +226,12 @@
           <ul>
             <li>
               <a href="/build-pages-config/v1.0/schema.json">build pages config v1.0</a>
-              (current)
+              (current) ·
+              <a
+                href="https://www.schemastore.org/zeropress-build-pages-config-1.0.json"
+                aria-label="Build Pages Config v1.0 on SchemaStore"
+                >SchemaStore</a
+              >
             </li>
             <li>
               <a href="/build-pages-config/v0.1/schema.json">build pages config v0.1</a>
@@ -222,15 +249,63 @@
           <ul>
             <li>
               <a href="/wxr-import-base/v0.7/schema.json">WXR import base v0.7</a>
-              (current)
+              (current) ·
+              <a
+                href="https://www.schemastore.org/zeropress-wxr-import-base-0.7.json"
+                aria-label="WXR Import Base v0.7 on SchemaStore"
+                >SchemaStore</a
+              >
             </li>
           </ul>
         </article>
       </section>
 
       <p class="note">
-        Documentation lives at
-        <a href="https://zeropress.dev/">zeropress.dev</a>.
+        <a
+          href="https://zeropress.dev/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Documentation (opens in a new tab)"
+        >
+          Documentation
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M15 3h6v6M10 14 21 3M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"
+            />
+          </svg>
+        </a>
+        <span aria-hidden="true">·</span>
+        <a
+          href="https://github.com/zeropress-app/schemas.zeropress.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Schema source on GitHub (opens in a new tab)"
+        >
+          Schema source on GitHub
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M15 3h6v6M10 14 21 3M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"
+            />
+          </svg>
+        </a>
       </p>
     </main>
   </body>
